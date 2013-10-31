@@ -1,0 +1,85 @@
+body {
+	padding-top: 10px;
+	-webkit-font-smoothing: antialiased;
+}
+
+
+span.connect {
+	float: left;
+	margin-right: 10px;
+	width: auto;
+	font-size: 0.8em;
+	line-height: 19px;
+}
+
+.icon-grid {
+	list-style-type: none;
+	margin-left: 0;
+	width: auto;
+	height: 19px;
+	line-height: 19px;
+}
+
+.icon-grid li {
+	float: left;
+	margin-right: 10px;
+}
+
+.shop-icon {
+	font-size: 2.5em;
+	display: block;
+	margin: 0px 0px 5px 0px;
+}
+
+.top-padding {
+	padding-top: 32px;
+}
+
+.sub-nav dt, .sub-nav dd, .sub-nav li {
+	margin-left: 0.9625em;
+}
+
+.sub-nav dt, .sub-nav dd {
+	font-weight: bold;
+	font-size: 1.25em;
+}
+
+dl.sub-nav dd a {
+	color: #000;
+}
+
+h1 {
+	font-size: 1.5em;
+	margin:20px 0px 20px 0px;
+}
+
+h2 {
+	font-size: 1.2em;
+}
+
+h3 {
+	font-size: 1em;
+}
+
+figure {
+	-webkit-margin-before: 0em;
+	-webkit-margin-after: 0em;
+	-webkit-margin-start: 0px;
+	-webkit-margin-end: 0px;
+}
+
+.product-box {
+	margin-bottom: 20px;
+}
+
+.product-box:hover a.add-cart {
+	display: block;
+}
+
+.add-cart {
+	position: absolute;
+	top: 10px;
+	right: 20px;
+	display: none;
+	font-size: 0.9em;
+}
