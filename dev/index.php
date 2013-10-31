@@ -11,12 +11,13 @@ require("includes/fake_db.inc");
 <head>
 	<meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Foundation 4</title>
+  <title>Brittle Barn</title>
 
   
   <link rel="stylesheet" href="css/foundation.css">
   <link rel="stylesheet" href="css/social_foundicons.css">
   <link rel="stylesheet" href="css/general_foundicons.css">
+  <link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
   <link rel="stylesheet" href="css/app.css">
 
   
