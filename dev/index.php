@@ -189,17 +189,7 @@ require("includes/fake_db.inc");
 
 
 
-	<div class="row">
 
-		<div class="large-12 columns">
-			<a name="about"></a>
-			<h1 data-magellan-destination="about">About Us</h1>
-			<img src="http://placehold.it/1000x350">
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat volutpat. Donec placerat nisl magna, et faucibus arcu condimentum sed. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat volutpat. Donec placerat nisl magna, et faucibus arcu condimentum sed. </p>
-			<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam at porttitor sem. Aliquam erat volutpat. Donec placerat nisl magna, et faucibus arcu condimentum sed. </p>
-		</div>
-
-	</div>
 
 
 
@@ -240,7 +230,28 @@ require("includes/fake_db.inc");
 		</div>
 
 	</div>
+	
+	
+	<footer class="row">
 
+		<div class="large-12 columns">
+			<a name="about"></a>
+
+			<h1 data-magellan-destination="about">About Us</h1>
+		</div>
+		<div class='row'>
+			<div class='small-6 large-2 columns'>
+				<img src="<?=WEBSITE."/img/square/MattAntonia.jpg";?>" alt="Matt Lima and Antonia Pereira"/>
+			</div>
+			<div class='small-6 large-10 columns'>
+				<p>Matt and Antonia met in 2012. Brittle Barn is the product of their deep and abiding love... of sweets.</p>
+			</div>
+		</div>
+			
+			
+		</div>
+
+	</footer>
 
 
   <script>
