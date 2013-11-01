@@ -1,8 +1,5 @@
-<script>
-  document.write('<script src=' +
-  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
-  '.js><\/script>')
-  </script>
+
+	<script src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
   
   <script src="js/foundation.min.js"></script>
   <!--
