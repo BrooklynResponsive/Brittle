@@ -216,14 +216,15 @@ require("includes/config.php");
 		<div class="large-12 columns">
 			<h1>Join the mailing list</h1>
 			<p>Get information about upcoming sale events, new flavors, Brittle Barn stall locations, and more. We will never sell, rent, or give away your e-mail address for any reason. We also won't bombard you with frequent e-mails.</p>
+			 <div class="alert-box radius" style="display:none;" id="mlist-response"></div>
 			<form action="#" class="custom">
 
-			  <div class="row">
+			  <div class="row" id="mlist-signup">
 			    	<div class="large-6 small-8 columns">
-			          	<input type="text" placeholder="your-email@somewhere.com">
+			          	<input type="text" name='mlist-e' placeholder="your-email@somewhere.com">
 			    	</div>
 			    	<div class="large-2 small-4 columns">
-			          	<a href="#" class="button prefix">Join list</a>
+			          	<a href="#" data-action="add-to-mlist" class="button prefix">Join list</a>
 			    	</div>
 			    	<div class="large-4 columns">
 			          	
