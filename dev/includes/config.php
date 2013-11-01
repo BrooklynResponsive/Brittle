@@ -41,6 +41,8 @@ require(DOCUMENT_ROOT."/includes/cart.class.php");
 
 $DB=new BB_DB();
 
-
+function outForCode($text){
+	return(htmlentities($text, ENT_QUOTES, "UTF-8"));
+}
 		
 ?>
