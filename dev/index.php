@@ -1,8 +1,8 @@
 <?
-ini_set("display_errors","on");
-if( strpos( dirname(__FILE__), "/dev") !== false) define("WEBSITE","http://www.brittlebarn.com/dev"); else define("WEBSITE","http://www.brittlebarn.com"); 
 
-require("includes/fake_db.inc");
+
+require("includes/config.php");
+
 
 ?><!DOCTYPE html>
 <!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
