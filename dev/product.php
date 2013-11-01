@@ -82,7 +82,7 @@ mysql_data_seek($imgs,0);
 			
 			<h1><?=$prod->name;?></h1>
 
-			<h2 class="green">$<?=$prod->price;?> <span><?=$prod->size;?></span></h2>
+			<h2 class="product-price">$<?=$prod->price;?> <span><?=$prod->size;?></span></h2>
 
 
 			<p><?=$prod->description;?></p>

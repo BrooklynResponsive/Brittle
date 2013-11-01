@@ -95,7 +95,7 @@ require("includes/config.php");
 				<a href="product.php?id=<?=$prod->id;?>" class="add-cart">add to cart <i class="general foundicon-cart"></i></a>
 				<figcaption> 
 	                <h2><?=$prod->name;?></h2>
-	                <h3>$<?=$prod->price;?> • <span class='product-size'><?=$prod->size;?></span></h3>
+	                <h3 class="product-price">$<?=$prod->price;?> • <span class='product-size'><?=$prod->size;?></span></h3>
 	            </figcaption>
 			</figure>
 			</li>
@@ -132,7 +132,7 @@ require("includes/config.php");
 				<a href="product.php?id=<?=$prod->id;?>" class="add-cart">add to cart <i class="general foundicon-cart"></i></a>
 				<figcaption> 
 	                <h2><?=$prod->name;?></h2>
-	                <h3>$<?=$prod->price;?> • <span class='product-size'><?=$prod->size;?></span></h3>
+	                <h3 class="product-price">$<?=$prod->price;?> • <span class='product-size'><?=$prod->size;?></span></h3>
 	            </figcaption>
 			</figure>
 			</li>
@@ -168,7 +168,7 @@ require("includes/config.php");
 				<a href="product.php?id=<?=$prod->id;?>" class="add-cart">add to cart <i class="general foundicon-cart"></i></a>
 				<figcaption> 
 	                <h2><?=$prod->name;?></h2>
-	                <h3>$<?=$prod->price;?> • <span class='product-size'><?=$prod->size;?></span></h3>
+	                <h3 class="product-price">$<?=$prod->price;?> • <span class='product-size'><?=$prod->size;?></span></h3>
 	            </figcaption>
 			</figure>
 			</li>
