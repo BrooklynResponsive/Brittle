@@ -28,9 +28,9 @@
 					<span class="connect">connect</span>
 
 					<ul class="icon-grid">
-					  <li><i class="social foundicon-twitter"></i></li>
-				      <li><i class="social foundicon-facebook"></i></li>
-				      <li><i class="social foundicon-instagram"></i></li>
+					  <li><a target="_blank" href="https://twitter.com/intent/follow?source=followbutton&variant=1.0&screen_name=brittlebarn"><i class="social foundicon-twitter "></i></a></li>
+				      <li><a href="https://facebook.com/brittlebarn"><i class="social foundicon-facebook"></i></a></li>
+				      <li><a href="https://instagram.com/brittlebarn"><i class="social foundicon-instagram"></i></a></li>
 				    </ul>
 
 				</div>
@@ -38,3 +38,4 @@
 			</div>
 
 	</header>
+	
