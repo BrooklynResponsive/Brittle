@@ -12,8 +12,10 @@ if(!$prod){
 	exit();
 	
 }
-$imgs = $DB->q("select i.* from Image i join rel_PRODUCT_IMAGES r on r.targetRow=i.id where r.sourceRow=$prod->id order by r.ordinal");
 
+$imgs = $DB->q("select i.* from Image i join rel_PRODUCT_IMAGES r on r.targetRow=i.id where r.sourceRow=$prod->id order by r.ordinal");
+$mainImage = mysql_fetch_object($imgs);
+mysql_data_seek($imgs,0);
 
 ?>
 <!DOCTYPE html>
@@ -38,6 +40,13 @@ $imgs = $DB->q("select i.* from Image i join rel_PRODUCT_IMAGES r on r.targetRow
   <![endif]-->
   
 
+  	<meta property="og:site_name" content="Brittle Barn"/>
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Brittle Barn <?=outForCode($prod->name.", ".$prod->size);?>" />
+	<meta property="og:url" content="<?=WEBSITE;?>/product.php?id=<?=$prod->id;?>" />
+	<meta property="og:image" content="<?=WEBSITE.$mainImage->path;?>" />
+	<meta property="og:description" content="<?=outForCode($prod->description);?>" /> 
+	
   <script src="js/vendor/custom.modernizr.js"></script>
 
 </head>
@@ -56,7 +65,7 @@ $imgs = $DB->q("select i.* from Image i join rel_PRODUCT_IMAGES r on r.targetRow
 			?>
 	        	<li>        
 			        <figure class='figure-orbit'>
-			       			<img src='<?=WEBSITE.$img->path;?>' alt="<?=htmlentities(strip_tags($img->caption));?>"  />
+			       			<img src='<?=WEBSITE.$img->path;?>' alt="<?=outForCode(strip_tags($img->caption));?>"  />
 							
 						   
 
@@ -80,7 +89,7 @@ $imgs = $DB->q("select i.* from Image i join rel_PRODUCT_IMAGES r on r.targetRow
 
 			<p>Quantity: <input  type="text" size="3" id="quantity" value='1' class="shopping-cart-qty-big"> </p>
 			
-			<a href="#" class="button radius" data-reveal-id="add-to-cart">Add to Cart</a>
+			<a href="#" class="button radius" rel="add-to-cart">Add to Cart</a>
 
 			<hr>
 
@@ -98,79 +107,7 @@ $imgs = $DB->q("select i.* from Image i join rel_PRODUCT_IMAGES r on r.targetRow
 
 
 
-	<!-- Reveal Shopping Cart -->
-	<div id="add-to-cart" class="reveal-modal small">
-
-	  <div class="row">
-
-	  		<div class="large-12 columns">
-	  			<h2>Item added to your cart</h2>
-	  		</div>
-
-	  		<div class="large-6 columns">
-
-	  				<p><strong>Veracruz Brittle</strong> <span>7oz bag</a></p>
-
-	  				<img src="http://placehold.it/100x100">
-
-	  				<table width="50%" border="0" cellspacing="0" cellpadding="0">
-					  <tr>
-					    <td><span class="shopping-cart-attribute">Quantity:</span></td>
-					    <td align="right"><input type="text" size="3" class="shopping-cart-qty"></td>
-					  </tr>
-					  <tr>
-					    <td><span class="shopping-cart-attribute">Price:</span></td>
-					    <td align="right"><span class="shopping-cart-attribute price">$9.00</span></td>
-					  </tr>
-					  <tr>
-					    <td><span class="shopping-cart-attribute">Shipping:</span></td>
-					    <td align="right"><span class="shopping-cart-attribute">$2.00</span></td>
-					  </tr>
-					</table>
-
-	  		</div>
-
-	  		<div class="large-6 columns">
-
-	  				<div class="panel cart-summary">
-
-	  					<p><strong>Cart summary	<span>1 Item</span></strong></p>
-
-	  					<hr>
-
-	  					<p>Subtotal	<span>$9.00</span></p>
-	  					<p>Shipping	<span>$6.00</span></p>
-	  					<p>Tax <i>Applied during checkout</i></p>
-
-	  					<hr>
-
-	  					<p><strong>Total <span class="green">$15.00</span></strong></p>
-
-	  				</div>
-
-	  		</div>
-
-
-	  		<div class="large-6 columns">
-
-	  				<a href="#" class="button round btn-continue-shopping expand">Continue Shopping</a>
-
-	  		</div>
-
-
-	  		<div class="large-6 columns">
-
-	  				<a href="#" class="button round expand">Go to Cart</a>
-
-	  		</div>
-
-
-	  </div>
-
-
-	  <a class="close-reveal-modal">&#215;</a>
-	</div>
-	<!-- Reveal Shopping Cart -->
+	
 	
 
 

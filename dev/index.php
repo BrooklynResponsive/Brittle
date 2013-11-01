@@ -26,6 +26,16 @@ require("includes/config.php");
     <link rel="stylesheet" href="stylesheets/general_foundicons_ie7.css">
   <![endif]-->
   
+	 <meta property="twitter:account_id" content="1918536176" />
+	
+  	<meta property="og:site_name" content="Brittle Barn"/>
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Brittle Barn" />
+	<meta property="og:url" content="<?=WEBSITE;?>/" />
+	<meta property="og:image" content="http://brittlebarn.com/img/brittle-barn-logo-square.jpg" />
+	<meta property="og:description" content="Brittle, Sweets, Syrups, handmade from premium all-natural ingredients in Brooklyn, NYC." />
+	
+
 
   <script src="js/vendor/custom.modernizr.js"></script>
 
@@ -44,7 +54,7 @@ require("includes/config.php");
 			?>
 	        	<li>        
 			        <figure class='figure-orbit'>
-			       			<img src='<?=WEBSITE.$img['path'];?>' alt="<?=htmlentities(strip_tags($img['caption']));?>"  />
+			       			<img src='<?=WEBSITE.$img['path'];?>' alt="<?=outForCode(strip_tags($img['caption']));?>"  />
 							
 						    
 
