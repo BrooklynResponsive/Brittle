@@ -47,7 +47,7 @@ require("includes/fake_db.inc");
 					    <dd data-magellan-arrival="brittle"><a href="#brittle">Brittle</a></dd>
 					    <dd data-magellan-arrival="sweets"><a href="#sweets">Sweets</a></dd>
 					    <dd data-magellan-arrival="syrups"><a href="#syrups">Syrups</a></dd>
-					    <dd data-magellan-arrival="about"><a href="#about">About Us</a></dd>
+					    <dd data-magellan-arrival="special"><a href="#special">Special Orders</a></dd>
 					    <dd data-magellan-arrival="contact"><a href="#contact">Contact Us</a></dd>
 					  </dl>
 					</div>
@@ -190,6 +190,23 @@ require("includes/fake_db.inc");
 
 
 
+	<div class="row">
+
+		<div class="large-12 columns">
+			<a name="special"></a>
+			<h1 data-magellan-destination="special">Special Orders</h1>
+			<p>Bulk pricing is available for large orders. We also provide:
+			</p>
+			<ul>
+				<li>Gift bags</li>
+				<li>Custom labeling and branding</li>
+				<li>Alternative packaging and sizes</li>
+				<li>On-site services ("Brittle Bar" dessert table, etc.)</li>
+				<li>Custom/themed flavors</li>
+			</ul>
+		</div>
+
+	</div>
 
 
 
@@ -236,16 +253,14 @@ require("includes/fake_db.inc");
 	<footer class="row">
 
 		<div class="large-12 columns">
-			<a name="about"></a>
-
-			<h1 data-magellan-destination="about">About Us</h1>
+			<h1>About Us</h1>
 		</div>
 		<div class='row'>
 			<div class='small-6 large-2 columns'>
 				<img src="<?=WEBSITE."/img/square/MattAntonia.jpg";?>" alt="Matt Lima and Antonia Pereira"/>
 			</div>
 			<div class='small-6 large-10 columns'>
-				<p>Matt and Antonia met in 2012. Brittle Barn is the product of their deep and abiding love... of sweets.</p>
+				<p>Matt and Antonia met in 2012 and live in Gowanus, Brooklyn. Brittle Barn is the product of their deep and abiding love... of sweets.</p>
 			</div>
 		</div>
 			
