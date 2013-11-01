@@ -25,46 +25,7 @@
 </head>
 <body>
 
-	<header>
-
-			<div class="row">
-				
-				<div class="large-2 columns">
-					<a href="#"><img src="img/logo.gif"></a>
-				</div>
-
-				<div class="large-7 columns top-padding">
-					
-					<div data-magellan-expedition="fixed">
-					  <dl class="sub-nav">
-					    <dd data-magellan-arrival="Brittle"><a href="#Brittle">Brittle</a></dd>
-					    <dd data-magellan-arrival="Sweets"><a href="#Sweets">Sweets</a></dd>
-					    <dd data-magellan-arrival="Syrup"><a href="#Syrup">Syrup</a></dd>
-					    <dd data-magellan-arrival="About"><a href="#About">About Us</a></dd>
-					    <dd data-magellan-arrival="Contact"><a href="#Contact">Contact Us</a></dd>
-					  </dl>
-					</div>
-					    
-
-				</div>
-
-				<div class="large-3 columns text-right">
-					
-					<i class="general foundicon-cart shop-icon"></i>
-
-					<span class="connect">connect</span>
-
-					<ul class="icon-grid">
-					  <li><i class="social foundicon-twitter"></i></li>
-				      <li><i class="social foundicon-facebook"></i></li>
-				      <li><i class="social foundicon-instagram"></i></li>
-				    </ul>
-
-				</div>
-			
-			</div>
-
-	</header>
+	<? include("includes/header.inc"); ?> 
 	
 
 
