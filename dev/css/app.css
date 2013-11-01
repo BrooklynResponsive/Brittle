@@ -84,6 +84,7 @@ figure {
 
 .product-box {
 	margin-bottom: 20px;
+	position:relative;
 }
 
 .product-box:hover a.add-cart {
