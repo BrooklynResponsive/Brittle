@@ -140,6 +140,14 @@ input.shopping-cart-qty {
 	margin:0px;
 }
 
+input.shopping-cart-qty-big {
+	height: 30px;
+	width: 40px;
+	line-height: 30px;
+	margin:0px;
+	display:inline-block;
+}
+
 .panel.cart-summary p {
 	font-size: 0.9em;
 	margin-bottom: 10px;
