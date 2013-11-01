@@ -24,7 +24,7 @@ var brittlebarn = {};
     function Modal(elementID, url, postdata, options) {
 		this.data = {};
 		this.data.elementID = elementID;
-		this.data.url = (typeof(url)!='undefined') ? ("/ajax/"+url) : null ;
+		this.data.url = (typeof(url)!='undefined') ? (url) : null ;
 		this.data.postdata = (typeof(postdata)!='undefined') ? postdata : null ;
 		this.options = (typeof(options)!='undefined') ? options : function(){ return null } ;
 		
@@ -82,7 +82,7 @@ var brittlebarn = {};
 	    
 	    ajaxError : function(){
 			$(".reveal-modal-bg").remove();
-	    	$("<div class='reveal-modal expand'><h2>Oops.</h2><p class='lead'>There was an error communicating with the server.</p><p>We'd like to fix this, and get you where you were going. Please let us know about this problem by e-mailing <a href='mailto:webmaster@brittlebarn.com'>webmaster@brittlebarn.com</a>.</p><a class='close-reveal-modal'>&#215;</a></div>").appendTo('body').foundation('reveal','open');
+	    	$("<div class='reveal-modal expand'><h2>Oops.</h2><p class='lead'>There was an error communicating with the server.</p><p>We'd like to fix this, and get you where you were going. Please let us know about this problem by e-mailing <a href='mailto:hello@brittlebarn.com'>hello@brittlebarn.com</a>.</p><a class='close-reveal-modal'>&#215;</a></div>").appendTo('body').foundation('reveal','open');
 	    }
     }
     
@@ -204,8 +204,8 @@ var brittlebarn = {};
 		 if($(this).attr('href')=="#") event.preventDefault(); //prevent link action or anchor tag jump
 		 
 	 	 switch($(this).data('action')){
-	 	 	case "signin":
-	 	 		return( new brittlebarn.Modal("signin-register","signin-register.php",null,{modalClass:"small"}) );
+	 	 	case "add-to-mlist":
+	 	 		return( new brittlebarn.addToMList($("[name=mlist-e]").val()) );
 	 	 	break;
 	 	 	case "modal":
 	 	 		return( new brittlebarn.Modal($(this).data('action-id')) );
@@ -223,7 +223,45 @@ var brittlebarn = {};
 	 
 	 brittlebarn.Action = Action;
 	 
+	 
+	 function addToMList(email){
+	 	if(!email.match( /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,6})$/ ) ){
+		 	$("#mlist-response").addClass("alert").removeClass("success").html("That email address appears to be invalid").slideDown(500, $.proxy(this,'mlistUp'));
+		 	return;
+	 	}
+		$.post("add-to-mlist.php",{"email":$("[name=mlist-e]").val()}, $.proxy(this, 'processResponse'));
+		 
+	 }
+	 
+	 addToMList.prototype = {
+		 processResponse : function(data){
+			 
+			 var t = data.split("|");
 
+
+
+			 switch(t[0]){
+				case "":
+					$("#mlist-response").addClass("alert").removeClass("success").html("An error occured. Please let us know at <a href='mailto:hello@brittlebarn.com'>hello@brittlebarn.com</a>").slideDown(500, $.proxy(this,'mlistUp'));
+				break;
+				case "0":
+					$("#mlist-response").addClass("alert").removeClass("success").html(t[1]).slideDown(500, $.proxy(this,'mlistUp'));
+				break;
+				case "1":
+					$("#mlist-response").addClass("success").removeClass("alert").html(t[1]).slideDown(500);
+					$("#mlist-signup").slideUp();
+				break;				 
+			 }
+		 },
+		 
+		 mlistUp : function(){
+			 setTimeout("$('#mlist-response').slideUp();", 3000);
+		 }
+	 }
+	 
+	 
+	 brittlebarn.addToMList = addToMList;
+	 
 })(window || this);
 
 
@@ -246,3 +284,18 @@ $(document).foundation()
       email: /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,6})$/
     }
   });
+  
+$(document).ready(function(){
+	$("[rel=add-to-cart],[rel=go-to-cart]").click(function(){
+		new brittlebarn.Modal('add-to-cart','ajax/add-to-cart.php',{},{modalClass:'medium'});
+	});
+	$("[name=mlist-e]").keypress(function(e){
+		if(e.which==13){
+			new brittlebarn.addToMList($("[name=mlist-e]").val());
+			return false;
+		}
+	});
+	
+	$(document).on("click","[data-action]", brittlebarn.Action );
+
+});
