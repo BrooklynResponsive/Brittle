@@ -25,7 +25,7 @@ class BB_DB{
 		if(!self::$relationTypesCache){
 			$r=$this->q("select * from relationTypes");
 			self::$relationTypesCache = array();
-			while($rr=mysql_fetch_assoc($r)){
+			while(@ $rr=mysql_fetch_assoc($r)){
 				self::$relationTypesCache[]=$rr;
 			}
 		}
@@ -43,7 +43,7 @@ class BB_DB{
 	protected function setUpMemcache(){	
 		global $MEMCACHED_SERVER;
 		self::$mcdKeyPrefix=BB_DB_NAME;
-		if(MEMCACHED_ACTIVE_FOR_DB_PROXIES && !isset(self::$mcd) && class_exists("Memcache") && isset($MEMCACHED_SERVER)) { 	
+		if(@MEMCACHED_ACTIVE_FOR_DB_PROXIES && !isset(self::$mcd) && class_exists("Memcache") && isset($MEMCACHED_SERVER)) { 	
 			self::$mcd=new Memcache();
 			foreach($MEMCACHED_SERVER as $SERVER){
 				$try=@self::$mcd->addServer($SERVER, MEMCACHED_PORT );

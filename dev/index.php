@@ -84,7 +84,7 @@ require("includes/config.php");
 	        	<li>        
 			        <figure class='figure-orbit'>
 			       			<img src='<?=WEBSITE.$img['path'];?>' alt="<?=htmlentities(strip_tags($img['caption']));?>"  />
-
+							
 						    
 
 						    <figcaption class='orbit-caption'>
@@ -111,10 +111,16 @@ require("includes/config.php");
 		</div>
 		
 		<ul class="small-block-grid-2 large-block-grid-4 product-list">
-		<? foreach($products['brittle'] as $prod){ ?>
+		<? 
+		$q = $DB->q("SELECT * from products where type='BRITTLE'");
+		
+		while($prod = mysql_fetch_object($q)){ 
+			$img=mysql_fetch_object($DB->q("select i.* from Image i, rel_PRODUCT_IMAGES r where r.targetRow=i.id and r.sourceRow=$prod->id"));
+			
+		?>
 			<li>		
 			<figure class="product-box">
-				<a href="product.php?id=<?=$prod->id;?>"><img src="<?=WEBSITE.$prod->img[0];?>"></a>
+				<a href="product.php?id=<?=$prod->id;?>"><img src="<?=WEBSITE.$img->path;?>"></a>
 				<a href="product.php?id=<?=$prod->id;?>" class="add-cart">add to cart <i class="general foundicon-cart"></i></a>
 				<figcaption> 
 	                <h2><?=$prod->name;?></h2>
@@ -142,10 +148,16 @@ require("includes/config.php");
 		</div>
 
 		<ul class="small-block-grid-2 large-block-grid-4 product-list">
-		<? foreach($products['sweets'] as $prod){ ?>
+		<? 
+		$q = $DB->q("SELECT * from products where type='SWEETS'");
+		
+		while($prod = mysql_fetch_object($q)){ 
+			$img=mysql_fetch_object($DB->q("select i.* from Image i, rel_PRODUCT_IMAGES r where r.targetRow=i.id and r.sourceRow=$prod->id"));
+			
+		?>
 			<li>		
 			<figure class="product-box">
-				<a href="product.php?id=<?=$prod->id;?>"><img src="<?=WEBSITE.$prod->img[0];?>"></a>
+				<a href="product.php?id=<?=$prod->id;?>"><img src="<?=WEBSITE.$img->path;?>"></a>
 				<a href="product.php?id=<?=$prod->id;?>" class="add-cart">add to cart <i class="general foundicon-cart"></i></a>
 				<figcaption> 
 	                <h2><?=$prod->name;?></h2>
@@ -172,10 +184,16 @@ require("includes/config.php");
 		</div>
 
 		<ul class="small-block-grid-2 large-block-grid-4 product-list">
-		<? foreach($products['syrups'] as $prod){ ?>
+		<? 
+		$q = $DB->q("SELECT * from products where type='SYRUPS'");
+		
+		while($prod = mysql_fetch_object($q)){ 
+			$img=mysql_fetch_object($DB->q("select i.* from Image i, rel_PRODUCT_IMAGES r where r.targetRow=i.id and r.sourceRow=$prod->id"));
+			
+		?>
 			<li>		
 			<figure class="product-box">
-				<a href="product.php?id=<?=$prod->id;?>"><img src="<?=WEBSITE.$prod->img[0];?>"></a>
+				<a href="product.php?id=<?=$prod->id;?>"><img src="<?=WEBSITE.$img->path;?>"></a>
 				<a href="product.php?id=<?=$prod->id;?>" class="add-cart">add to cart <i class="general foundicon-cart"></i></a>
 				<figcaption> 
 	                <h2><?=$prod->name;?></h2>
@@ -216,7 +234,16 @@ require("includes/config.php");
 		<div class="large-12 columns">
 			<a name="contact"></a>
 			<h1 data-magellan-destination="contact">Contact Us</h1>
-			<p>You can reach us at <a href="mailto:email@example.com">email@example.com</a></p>
+			<p>You can reach us at <a href="mailto:hello@brittlebarn.com">hello@brittlebarn.com</a></p>
+			
+			<p>Follow us or drop us a line: </p>
+			<ul style='list-style:none;'>
+			<li><a href="https://facebook.com/brittlebarn"><strong>brittlebarn</strong> on facebook</a>
+			<li><a href="http://instagram.com/brittlebarn"><strong>brittlebarn</strong> on instagram</a></li>
+			<li><a href="https://twitter.com/brittlebarn"><strong>@brittlebarn</strong></a> on twitter</li>
+			</ul>
+
+
 		</div>
 
 	</div>
@@ -227,15 +254,15 @@ require("includes/config.php");
 
 		<div class="large-12 columns">
 			<h1>Join the mailing list</h1>
-			
+			<p>Get information about upcoming sale events, new flavors, Brittle Barn stall locations, and more. We will never sell, rent, or give away your e-mail address for any reason. We also won't bombard you with frequent e-mails.</p>
 			<form action="#" class="custom">
 
 			  <div class="row">
 			    	<div class="large-6 small-8 columns">
-			          	<input type="text" placeholder="Hex Value">
+			          	<input type="text" placeholder="your-email@somewhere.com">
 			    	</div>
 			    	<div class="large-2 small-4 columns">
-			          	<a href="#" class="button prefix">Action</a>
+			          	<a href="#" class="button prefix">Join list</a>
 			    	</div>
 			    	<div class="large-4 columns">
 			          	
