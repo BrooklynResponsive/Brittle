@@ -37,14 +37,14 @@ class BB_Error{
 			$logEntry .= "\n";
 
 			
-			if(!file_exists(BB_ERROR_LOGFILE)) $this->zeroLog();
+			if(@!file_exists(BB_ERROR_LOGFILE)) $this->zeroLog();
 			if(BB_ERROR_LOGGING){
 			 $f=fopen(BB_ERROR_LOGFILE,"at");;
 			 fwrite($f,$logEntry);
 			 fclose($f);
 			 }
 		 }
-		 if((BB_DEBUG && $_SESSION['err'] == 1)){
+		 if((BB_DEBUG && @$_SESSION['err'] == 1)){
 		 	/*
 		 	echo("<pre>");
 		 	var_dump(debug_backtrace());
