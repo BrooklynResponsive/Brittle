@@ -13,7 +13,7 @@ require("includes/config.php");
   <meta name="viewport" content="width=device-width">
   <title>Brittle Barn</title>
 
-  
+
   <link rel="stylesheet" href="css/foundation.css">
   <link rel="stylesheet" href="css/social_foundicons.css">
   <link rel="stylesheet" href="css/general_foundicons.css">
@@ -58,7 +58,7 @@ require("includes/config.php");
 							
 						    
 
-						    <figcaption class='orbit-caption'>
+						    <figcaption class='orbit-caption hide-for-small'>
 									<?=$img['caption'];?>
 							</figcaption>
 
@@ -81,9 +81,10 @@ require("includes/config.php");
 			<h1 data-magellan-destination="brittle">Nut brittle handmade from premium ingredients in Brooklyn, NYC.</h1>
 		</div>
 		
+		<div class="large-12 columns">
 		<ul class="small-block-grid-2 large-block-grid-4 product-list">
 		<? 
-		$q = $DB->q("SELECT * from products where type='BRITTLE'");
+		$q = $DB->q("SELECT * from products where type='BRITTLE' and isActive=1 order by name");
 		
 		while($prod = mysql_fetch_object($q)){ 
 			$img=mysql_fetch_object($DB->q("select i.* from Image i, rel_PRODUCT_IMAGES r where r.targetRow=i.id and r.sourceRow=$prod->id"));
@@ -92,16 +93,16 @@ require("includes/config.php");
 			<li>		
 			<figure class="product-box">
 				<a href="product.php?id=<?=$prod->id;?>"><img src="<?=WEBSITE.$img->path;?>"></a>
-				<a href="product.php?id=<?=$prod->id;?>" class="add-cart">add to cart <i class="general foundicon-cart"></i></a>
+				<span class="hide-for-small"><a href="product.php?id=<?=$prod->id;?>" class="add-cart">add to cart <i class="general foundicon-cart"></i></a></span>
 				<figcaption> 
 	                <h2><?=$prod->name;?></h2>
-	                <h3 class="product-price">$<?=$prod->price;?> • <span class='product-size'><?=$prod->size;?></span></h3>
+	                <h3 class="product-price">$<?=$prod->price;?> <span class='product-size'> <?=$prod->size;?></span></h3>
 	            </figcaption>
 			</figure>
 			</li>
 		<? } ?> 
 		</ul>		
-
+		</div>
 
 		
 
@@ -118,9 +119,10 @@ require("includes/config.php");
 			<h1 data-magellan-destination="sweets">Hand-candied fruits, flowers, and condiments</h1>
 		</div>
 
+		<div class="large-12 columns">
 		<ul class="small-block-grid-2 large-block-grid-4 product-list">
 		<? 
-		$q = $DB->q("SELECT * from products where type='SWEETS'");
+		$q = $DB->q("SELECT * from products where type='SWEETS' and isActive=1 order by name");
 		
 		while($prod = mysql_fetch_object($q)){ 
 			$img=mysql_fetch_object($DB->q("select i.* from Image i, rel_PRODUCT_IMAGES r where r.targetRow=i.id and r.sourceRow=$prod->id"));
@@ -129,16 +131,16 @@ require("includes/config.php");
 			<li>		
 			<figure class="product-box">
 				<a href="product.php?id=<?=$prod->id;?>"><img src="<?=WEBSITE.$img->path;?>"></a>
-				<a href="product.php?id=<?=$prod->id;?>" class="add-cart">add to cart <i class="general foundicon-cart"></i></a>
+				<span class="hide-for-small"><a href="product.php?id=<?=$prod->id;?>" class="add-cart">add to cart <i class="general foundicon-cart"></i></a></span>
 				<figcaption> 
 	                <h2><?=$prod->name;?></h2>
-	                <h3 class="product-price">$<?=$prod->price;?> • <span class='product-size'><?=$prod->size;?></span></h3>
+	                <h3 class="product-price">$<?=$prod->price;?> <span class='product-size'> <?=$prod->size;?></span></h3>
 	            </figcaption>
 			</figure>
 			</li>
 		<? } ?> 
 		</ul>		
-
+		</div>
 
 	</div>
 
@@ -151,12 +153,13 @@ require("includes/config.php");
 
 		<div class="large-12 columns">
 			<a name="syrups"></a>
-			<h1 data-magellan-destination="syrups">Syrups extracted from our candied items. Make extraordinary cocktails and more.</h1>
+			<h1 data-magellan-destination="syrups">Make extraordinary cocktails, salad dressing, and more with our syrups.</h1>
 		</div>
 
+		<div class="large-12 columns">
 		<ul class="small-block-grid-2 large-block-grid-4 product-list">
 		<? 
-		$q = $DB->q("SELECT * from products where type='SYRUPS'");
+		$q = $DB->q("SELECT * from products where type='SYRUPS' and isActive=1 order by name");
 		
 		while($prod = mysql_fetch_object($q)){ 
 			$img=mysql_fetch_object($DB->q("select i.* from Image i, rel_PRODUCT_IMAGES r where r.targetRow=i.id and r.sourceRow=$prod->id"));
@@ -165,15 +168,16 @@ require("includes/config.php");
 			<li>		
 			<figure class="product-box">
 				<a href="product.php?id=<?=$prod->id;?>"><img src="<?=WEBSITE.$img->path;?>"></a>
-				<a href="product.php?id=<?=$prod->id;?>" class="add-cart">add to cart <i class="general foundicon-cart"></i></a>
+				<span class="hide-for-small"><a href="product.php?id=<?=$prod->id;?>" class="add-cart">add to cart <i class="general foundicon-cart"></i></a></span>
 				<figcaption> 
 	                <h2><?=$prod->name;?></h2>
-	                <h3 class="product-price">$<?=$prod->price;?> • <span class='product-size'><?=$prod->size;?></span></h3>
+	                <h3 class="product-price">$<?=$prod->price;?> <span class='product-size'> <?=$prod->size;?></span></h3>
 	            </figcaption>
 			</figure>
 			</li>
 		<? } ?> 
 		</ul>	
+		</div>
 		
 	</div>
 
@@ -181,18 +185,25 @@ require("includes/config.php");
 
 	<div class="row">
 
-		<div class="large-12 columns">
+		<div class="small-12 columns">
 			<a name="special"></a>
 			<h1 data-magellan-destination="special">Special Orders</h1>
 			<p>Bulk pricing is available for large orders. We also provide:
 			</p>
-			<ul>
-				<li>Gift bags</li>
-				<li>Custom labeling and branding</li>
-				<li>Alternative packaging and sizes</li>
-				<li>On-site services ("Brittle Bar" dessert table, etc.)</li>
-				<li>Custom/themed flavors</li>
-			</ul>
+			<div class="row">
+				<div class="small-1 columns">
+				</div>
+				<div class="small-11 columns">
+					<ul>
+						<li>Gifts and favors</li>
+						<li>Vegan versions of our flavors</li>
+						<li>Custom labeling and branding</li>
+						<li>Alternative packaging and sizes</li>
+						<li>On-site services ("Brittle Bar" dessert table, etc.)</li>
+						<li>Custom/themed flavors</li>
+					</ul>
+				</div>
+			</div>
 		</div>
 
 	</div>
@@ -227,6 +238,8 @@ require("includes/config.php");
 			<h1>Join the mailing list</h1>
 			<p>Get information about upcoming sale events, new flavors, Brittle Barn stall locations, and more. We will never sell, rent, or give away your e-mail address for any reason. We also won't bombard you with frequent e-mails.</p>
 			 <div class="alert-box radius" style="display:none;" id="mlist-response"></div>
+			
+
 			<form action="#" class="custom">
 
 			  <div class="row" id="mlist-signup">
@@ -254,17 +267,17 @@ require("includes/config.php");
 		<div class="large-12 columns">
 			<h1>About Us</h1>
 		</div>
-		<div class='row'>
-			<div class='small-6 large-2 columns'>
-				<img src="<?=WEBSITE."/img/square/MattAntonia.jpg";?>" alt="Matt Lima and Antonia Pereira"/>
+		<div class="large-12 columns">
+			<div class='row'>
+				<div class='small-6 large-2 columns'>
+					<img src="<?=WEBSITE."/img/square/MattAntonia.jpg";?>" alt="Matt Lima and Antonia Pereira"/>
+				</div>
+				<div class='small-6 large-10 columns'>
+					<p>Matt and Antonia met in 2012 and live in Gowanus, Brooklyn. Brittle Barn is the product of their deep and abiding love... of sweets.</p>
+				</div>
 			</div>
-			<div class='small-6 large-10 columns'>
-				<p>Matt and Antonia met in 2012 and live in Gowanus, Brooklyn. Brittle Barn is the product of their deep and abiding love... of sweets.</p>
-			</div>
-		</div>
+		</div>			
 			
-			
-		</div>
 
 	</footer>
 
