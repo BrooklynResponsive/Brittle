@@ -4,11 +4,19 @@ $mainOrbitContent = array(
 	
 	array(
 		"path" => "/img/wide/classic_4748.jpg",
-		"caption" => "Classic brittle. Hazelnuts, organic fair trade coffee beans, organic peanuts, rock salt. Photo: <em><a href='http://www.nadiachaudhury.com'>Nadia Chaudhury</a></em>"
+		"caption" => "Classic brittle. Hazelnuts, organic fair trade coffee beans, organic peanuts, coarse salt. Photo: <em><a href='http://www.nadiachaudhury.com'>Nadia Chaudhury</a></em>"
+	),
+	array(
+		"path" => "/img/wide/group_4597.jpg",
+		"caption" => "Photo: <em><a href='http://www.nadiachaudhury.com'>Nadia Chaudhury</a></em>"
 	),
 	array(
 		"path" => "/img/wide/veracruz_4513.jpg",
 		"caption" => "Veracruz brittle. Ancha chillies, bittersweet chocolate, cilantro and cinammon. Photo: <em><a href='http://www.nadiachaudhury.com'>Nadia Chaudhury</a></em>"
+	),
+	array(
+		"path" => "/img/wide/group-4oz-bottles.jpg",
+		"caption" => "Syrups for cocktails, salad dressings, desserts, and more..."
 	),
 	array(
 		"path" => "/img/wide/hibiscus_1121.jpg",
