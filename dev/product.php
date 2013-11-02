@@ -13,9 +13,14 @@ if(!$prod){
 	
 }
 
-$imgs = $DB->q("select i.* from Image i join rel_PRODUCT_IMAGES r on r.targetRow=i.id where r.sourceRow=$prod->id order by r.ordinal");
-$mainImage = mysql_fetch_object($imgs);
-mysql_data_seek($imgs,0);
+$iq = $DB->q("select i.* from Image i join rel_PRODUCT_IMAGES r on r.targetRow=i.id where r.sourceRow=$prod->id order by r.ordinal");
+$imgs=array();
+while($iqq=mysql_fetch_object($iq)){
+	$imgs[]=$iqq;
+}
+$mainImage = $imgs[0];
+$imgs[]=array_shift($imgs);
+
 
 ?>
 <!DOCTYPE html>
@@ -61,7 +66,7 @@ mysql_data_seek($imgs,0);
 		<div class="large-6 columns">
 			<ul data-orbit  data-options='timer_speed:7000; bullets:false; navigation_arrows: true; slide_number: true; timer: false;' >
 			<?
-			 while($img = mysql_fetch_object($imgs)){ 
+			 foreach($imgs as $img){ 
 			?>
 	        	<li>        
 			        <figure class='figure-orbit'>
@@ -95,10 +100,10 @@ mysql_data_seek($imgs,0);
 
 			<span class="connect">Share</span>
 
-			<ul class="icon-grid">
-				<li><i class="social foundicon-twitter"></i></li>
-				<li><i class="social foundicon-facebook"></i></li>
-				<li><i class="social foundicon-instagram"></i></li>
+			<ul class="icon-grid addthis_toolbox">
+				<li><a href="#" class="addthis_button_twitter"><i class="social foundicon-twitter addthis_button_twitter"></i></a></li>
+				<li><a href="#" class="addthis_button_facebook"><i class="social foundicon-facebook"></i></a></li>
+				<li><a href="#" class="addthis_button_instagram"><i class="social foundicon-instagram "></i></a></li>
 			</ul>
 
 		</div>
