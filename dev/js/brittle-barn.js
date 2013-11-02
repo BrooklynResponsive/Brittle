@@ -286,8 +286,9 @@ $(document).foundation()
   });
   
 $(document).ready(function(){
-	$("[rel=add-to-cart],[rel=go-to-cart]").click(function(){
+	$("[rel=add-to-cart],[rel=go-to-cart]").click(function(e){
 		new brittlebarn.Modal('add-to-cart','ajax/add-to-cart.php',{},{modalClass:'medium'});
+		e.preventDefault();
 	});
 	$("[name=mlist-e]").keypress(function(e){
 		if(e.which==13){
@@ -297,5 +298,27 @@ $(document).ready(function(){
 	});
 	
 	$(document).on("click","[data-action]", brittlebarn.Action );
+	$.getScript("//s7.addthis.com/js/300/addthis_widget.js#pubid=ra-52741830692226e6",function(){ 
+		
+		  addthis.layers({
+		    'theme' : 'transparent',
+		    'share' : {
+		      'position' : 'left',
+		      'numPreferredServices' : 5
+		    }, 
+		    'follow' : {
+		      'services' : [
+		        {'service': 'facebook', 'id': 'brittlebarn'},
+		        {'service': 'twitter', 'id': 'brittlebarn'},
+		        /* {'service': 'google_follow', 'id': '100526909136236901329'}, */
+		        /* {'service': 'linkedin', 'id': 'bizbash', 'usertype': 'company'}, */
+		        /* {'service': 'pinterest', 'id': 'bizbash'}, */
+		        {'service': 'instagram', 'id': 'brittlebarn'}
+		      ]
+		    }   
+		  });
+
+		
+	});
 
 });
