@@ -9,7 +9,7 @@ if($email==""){
 echo("0|no address entered.");
 exit();
 	
-}elseif(!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,6})$/", $email)){
+}elseif(!preg_match("/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,6})$/i", $email)){
 	
 echo("0|address appears to be invalid");
 exit();

@@ -225,7 +225,7 @@ var brittlebarn = {};
 	 
 	 
 	 function addToMList(email){
-	 	if(!email.match( /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,6})$/ ) ){
+	 	if(!email.match( /^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*(\.[A-Za-z]{2,6})$/ ) ){
 		 	$("#mlist-response").addClass("alert").removeClass("success").html("That email address appears to be invalid").slideDown(500, $.proxy(this,'mlistUp'));
 		 	return;
 	 	}
@@ -281,7 +281,7 @@ $(document).foundation()
 .foundation('reveal', { animationSpeed: 125, close: brittlebarn.Modal.prototype.onCloseEvent } ) // Make Reveal Animations not take forever, make sure we can do cleanup on close  //
 .foundation('abide', {
     patterns: {
-      email: /^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,6})$/
+      email: /^[_A-Za-z0-9-]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9-]+)*(\.[A-Za-z]{2,6})$/
     }
   });
   
