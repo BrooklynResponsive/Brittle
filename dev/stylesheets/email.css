@@ -5,7 +5,7 @@
 	margin:0;
 	padding:0;
 }
-* { font-family: "Montserrat", "Helvetica Neue", "Helvetica", Montserrat, Helvetica, Arial, sans-serif; }
+* { font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif; }
 
 img { 
 	max-width: 100%; 
@@ -19,24 +19,30 @@ body {
 	-webkit-text-size-adjust:none; 
 	width: 100%!important; 
 	height: 100%;
+	text-rendering: optimizeLegibility;
 }
 
 
 /* ------------------------------------- 
 		ELEMENTS 
 ------------------------------------- */
-a { color: #2BA6CB;}
+a { color: #2ba6cb;}
 
 .btn {
 	text-decoration:none;
 	color: #FFF;
-	background-color: #666;
+	background-color: #2284a1;
 	padding:10px 16px;
 	font-weight:bold;
 	margin-right:10px;
 	text-align:center;
 	cursor:pointer;
 	display: inline-block;
+	border-style: solid;
+	border-width: 1px;
+	border-color: #2284a1;
+	overflow: hidden;
+	font-size: 0.875em;
 }
 
 p.callout {
@@ -73,10 +79,27 @@ a.ms { background-color: #000!important; }
 	width:100%;
 }
 
+.icon-grid {
+	list-style-type: none;
+	margin-left: 0;
+	width: auto;
+	height: 19px;
+	line-height: 19px;
+}
+
+.icon-grid li {
+	float: left;
+	margin-right: 5px;
+}
+
+.left {
+	float: left;
+	width: auto;
+}
 /* ------------------------------------- 
 		HEADER 
 ------------------------------------- */
-table.head-wrap { width: 100%;}
+table.head-wrap { width: 100%; border-bottom: 1px solid #ccc;}
 
 .header.container table td.logo { padding: 15px; }
 .header.container table td.label { padding: 15px; padding-left:0px;}
@@ -105,11 +128,17 @@ table.footer-wrap { width: 100%;	clear:both!important;
 		TYPOGRAPHY 
 ------------------------------------- */
 h1,h2,h3,h4,h5,h6 {
-font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; line-height: 1.1; margin-bottom:15px; color:#000;
+	line-height: 1.1; 
+	margin-bottom:15px; 
+	color:#000;
 }
 h1 small, h2 small, h3 small, h4 small, h5 small, h6 small { font-size: 60%; color: #6f6f6f; line-height: 0; text-transform: none; }
 
-h1 { font-weight:200; font-size: 44px;}
+h1 {
+	font-size: 1.5em;
+	margin: 20px 0px 20px 0px;
+}
+
 h2 { font-weight:200; font-size: 37px;}
 h3 { font-weight:500; font-size: 27px;}
 h4 { font-weight:500; font-size: 23px;}
@@ -124,7 +153,15 @@ p, ul {
 	font-size:14px; 
 	line-height:1.6;
 }
-p.lead { font-size:17px; }
+p.lead {
+	font-family: inherit;
+	font-weight: normal;
+	font-size: 1em;
+	line-height: 1.6;
+	margin-bottom: 1.25em;
+	text-rendering: optimizeLegibility; 
+}
+
 p.last { margin-bottom:0px;}
 
 ul li {
