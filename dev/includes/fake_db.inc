@@ -7,8 +7,8 @@ $mainOrbitContent = array(
 		"caption" => "Classic brittle. Hazelnuts, organic fair trade coffee beans, organic peanuts, coarse salt. Photo: <em><a href='http://www.nadiachaudhury.com'>Nadia Chaudhury</a></em>"
 	),
 	array(
-		"path" => "/img/wide/group_4597.jpg",
-		"caption" => "Photo: <em><a href='http://www.nadiachaudhury.com'>Nadia Chaudhury</a></em>"
+		"path" => "/img/wide/veracruz-group.jpg",
+		"caption" => "Photo: <em>Jason Watt</em>"
 	),
 	array(
 		"path" => "/img/wide/veracruz_4513.jpg",
