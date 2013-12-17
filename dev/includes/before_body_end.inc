@@ -38,8 +38,10 @@
   
   -->
   
-  
-  
+  <script src="js/classes/brittle-cart.class.js"></script>
+
+  <script src="js/classes/brittle-user.class.js"></script>
+
   <script src="js/brittle-barn.js"></script>
   
   <? if(!BB_DEBUG){ ?>
