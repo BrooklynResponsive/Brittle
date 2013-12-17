@@ -14,4 +14,11 @@
 	figure{
 		margin:0
 	}
+
+    input.shopping-cart-item-quantity {
+        width: 40px;
+        margin: 0px;
+        padding: 0px;
+        position: static !important;
+    }
 </style>
