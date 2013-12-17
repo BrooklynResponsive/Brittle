@@ -222,5 +222,27 @@ table.shopping-cart td.top-border {
 	padding-top: 10px;
 }
 
+
+input.shopping-cart-item-quantity {
+    width: 40px;
+    margin: 0px;
+    padding: 0px;
+    position: static !important;
+}
+ .shopping-cart-row  div {
+    height: 30px;
+ }
+
+.shopping-cart-remove-item {
+    color: red;
+    font-size: 10px;
+    position: relative;
+    float: left;
+}
+
+#shopping-cart-items p {
+    position: relative;
+}
+
 /**** AddThis adjustment ****/
 .at4-follow-outer{display:none;}
