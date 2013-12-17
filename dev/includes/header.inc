@@ -24,7 +24,7 @@
 				<div class="large-3 columns text-right">
 					
 					<i class="general foundicon-cart shop-icon" rel='go-to-cart'></i>
-
+                    <span id="helloUser"></span>
 					<span class="connect">connect</span>
 
 					<ul class="icon-grid">
