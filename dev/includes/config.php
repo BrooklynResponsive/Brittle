@@ -7,6 +7,8 @@ header('Content-Type: text/html; charset=UTF-8');
 
 define("DOCUMENT_ROOT",str_replace("/includes/config.php","", __FILE__));
 $SALES_TAX_RATE = 0.08875;
+$ADMIN_USER_EMAIL = 'hello@brittlebarn.com';
+$ADMIN_USER_PASS = 'raeparthlives';
 
 if( strpos( dirname(__FILE__), "/dev") !== false || true ) {  //franks dev server
 			

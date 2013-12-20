@@ -44,6 +44,8 @@
 
   <script src="js/brittle-barn.js"></script>
   
+  <script src="js/add-to-cart.js"></script>
+  
   <? if(!BB_DEBUG){ ?>
   <script>
   (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

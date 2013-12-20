@@ -296,10 +296,20 @@ $(document).foundation()
   
 $(document).ready(function(){
 	$("[rel=add-to-cart],[rel=go-to-cart]").click(function(e){
-        var cart = new brittleCart();
-        var cartItem = new brittleCartItem($(this).data('product-id'), $(this).data('product-price'), $(this).data('product-name'));
-        cart.addItem(cartItem, $("#quantity").val());
-		new brittlebarn.Modal('add-to-cart','ajax/add-to-cart.php',{ product : $(this).data('product-id'), quantity: $("#quantity").val(), items : cart.getItems() },{modalClass:'small'});
+        var ajax_params = {};
+        if($(this).attr('rel') == 'add-to-cart')
+        {
+            var cart = new brittleCart();
+            var cartItem = new brittleCartItem($(this).data('product-id'), $(this).data('product-price'), $(this).data('product-name'));
+            cart.addItem(cartItem, $("#quantity").val());
+            ajax_params = { product : $(this).data('product-id'), quantity: $("#quantity").val(), items : cart.getItems() };
+        }
+        else
+        {
+            ajax_params = { 'summary' : true };
+        }
+
+		new brittlebarn.Modal('add-to-cart','ajax/add-to-cart.php',ajax_params,{modalClass:'small', onReady: addToCartOnReady});
 		e.preventDefault();
 	});
 	$("[name=mlist-e]").keypress(function(e){

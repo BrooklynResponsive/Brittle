@@ -2,10 +2,22 @@
 class BB_User extends BB_DB_Obj{
     
 	public function BB_User($initArray=false){
-        $this->doNotCache = true;
 		$fieldList=array('fname','lname','email','password','address1', 'address2', 'city', 'state', 'zip', 'phone', 'exp_month', 'exp_year', 'last_four', 'stripe_customer_id');
 		parent::__construct('customers', $fieldList, $initArray);
 	} 
+
+    static function generate_random_password()
+    {
+        $length = 8;
+        $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $randomString = '';
+        
+        for ($i = 0; $i < $length; $i++) {
+            $randomString .= $characters[rand(0, strlen($characters) - 1)];
+        }
+
+        return $randomString;
+    } 
 
     static function hash_password($pass, $email)
     {

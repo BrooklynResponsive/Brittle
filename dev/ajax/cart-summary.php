@@ -1,7 +1,6 @@
 <?
 
 require('../includes/config.php');
-require_once('../includes/classes/cart.class.php');
 
 $msg=false;
 $prod =2;

@@ -71,7 +71,7 @@ function brittleCart()
 
     function saveCart() {
         var seconds = (60*6*24*7);
-        var c_value="brittleCartContents=" + escape(JSON.stringify(items)) + "; max-age=" + String(seconds) +  ";";
+        var c_value = "brittleCartContents=" + escape(JSON.stringify(items)) + "; max-age=" + String(seconds) +  ";";
         document.cookie = c_value;
     }
 
@@ -120,6 +120,44 @@ function brittleCart()
         saveCart();
     };
 
+    this.updateItemQuantity = function(item_id, quantity)
+    {
+        if(!loadedItems)
+        {
+            loadCart();
+            loadedItems = true;
+        }
+
+        if(items[item_id] === undefined)
+        {
+            //item must already exist
+            return false;
+        }
+        else if(quantity <= 0)
+        {
+            this.removeItem(item_id);
+        }
+        else
+        {
+            items[item_id]['count'] = quantity;
+        }
+
+        saveCart();
+        return true;
+    };
+    
+    this.removeItem = function(item_id) {
+        if(!loadedItems)
+        {
+            loadCart();
+            loadedItems = true;
+        }
+
+        delete items[item_id];
+
+        saveCart();
+    };
+    
     this.estimateWeight = function() {
         loadCart();
         //right now, we'll just call it 6 oz per item
