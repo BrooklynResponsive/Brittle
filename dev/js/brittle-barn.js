@@ -260,7 +260,16 @@ var brittlebarn = {};
 	 }
 	 
 	 
-	 brittlebarn.addToMList = addToMList;
+    brittlebarn.addToMList = addToMList;
+
+    //initiate user
+    brittlebarn.user = new brittleUser();
+    brittlebarn.user.loadUser();
+
+    if(brittlebarn.user.attrs['fname'])
+    {
+        $("#helloUser").html("<a href='/account-settings.php'>Hello " + brittlebarn.user.attrs['fname'] + "</a>");
+    }
 	 
 })(window || this);
 
@@ -287,7 +296,10 @@ $(document).foundation()
   
 $(document).ready(function(){
 	$("[rel=add-to-cart],[rel=go-to-cart]").click(function(e){
-		new brittlebarn.Modal('add-to-cart','ajax/add-to-cart.php',{},{modalClass:'medium'});
+        var cart = new brittleCart();
+        var cartItem = new brittleCartItem($(this).data('product-id'), $(this).data('product-price'), $(this).data('product-name'));
+        cart.addItem(cartItem, $("#quantity").val());
+		new brittlebarn.Modal('add-to-cart','ajax/add-to-cart.php',{ product : $(this).data('product-id'), quantity: $("#quantity").val(), items : cart.getItems() },{modalClass:'small'});
 		e.preventDefault();
 	});
 	$("[name=mlist-e]").keypress(function(e){
@@ -322,3 +334,85 @@ $(document).ready(function(){
 	});
 
 });
+
+// form validation
+function validate(inputs, callback) {
+   var error_msg = "";
+    $.each(inputs, function() {
+        var validation_factors, validation_string = $(this).data('validate');
+        
+        if(validation_string !== undefined)
+        {
+        
+
+        if(validation_string.indexOf(',') == -1)
+        {
+            validation_factors = Array(validation_string);
+        }
+        else
+        {
+            validation_factors = validation_string.split(',');
+        }
+
+            for( var i=0; i< validation_factors.length; i++)
+            {
+                var value, factor = validation_factors[i];
+                
+                if(factor.indexOf(':') != -1)
+                {
+                    console.log("splitting");
+                    var split = factor.split(':');
+                    value = split[1];
+                    factor = split[0]
+                }
+
+                console.log("checking Field " + $("label[for='"+$(this).attr('id')+"']").html() + " factor" + factor + " val" + $(this).val());
+                switch(factor) {
+                    case 'nonempty':
+                        if($(this).val().length == 0)
+                        {
+                            error_msg += "Field " + $("label[for='"+$(this).attr('id')+"']").html() + " cannot be left blank.\n";
+                        }
+                        break;
+                    case 'numeric':
+                        if(!isNumber($(this).val()))
+                        {
+                            error_msg += "Field " + $("label[for='"+$(this).attr('id')+"']").html() + " needs to be numeric.\n";
+                        }
+                        break;
+                    case 'length':
+                        if($(this).val().length != value)
+                        {
+                            error_msg += "Field " + $("label[for='"+$(this).attr('id')+"']").html() + " must be exactly " + value + " characters long.\n"; 
+                        }
+                        break;
+                    case 'min-length':
+                        if($(this).val().length < value)
+                        {
+                            error_msg += "Field " + $("label[for='"+$(this).attr('id')+"']").html() + " must be at least " + value + " characters long.\n"; 
+                        }
+                        break;
+                    case 'max-length': 
+                        if($(this).val().length > value)
+                        {
+                            error_msg += "Field " + $("label[for='"+$(this).attr('id')+"']").html() + " must be less than " + value + " characters long.\n"; 
+                        }
+                        break;
+                }
+            }
+        }
+    });
+
+    if(error_msg == "")
+    {
+        window[callback]();
+    }
+    else
+    {
+        alert("Some errors were found:\n" + error_msg);
+    }
+}
+
+function isNumber(n) {
+  return !isNaN(parseFloat(n)) && isFinite(n);
+}

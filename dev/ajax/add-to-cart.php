@@ -2,75 +2,73 @@
 
 require('../includes/config.php');
 
+$msg=false;
+$id=(int)$_POST['product'];
+$quantity =  $_POST['quantity'];
+$items = $_POST['items'];
+
+$prod = mysql_fetch_object($DB->q("select * from products where id = $id"));
+if(!$prod){
+	
+	echo("That page does not exist.");
+	exit();
+	
+}
+$iq = $DB->q("select i.* from Image i join rel_PRODUCT_IMAGES r on r.targetRow=i.id where r.sourceRow=$prod->id order by r.ordinal");
+$imgs=array();
+while($iqq=mysql_fetch_object($iq)){
+	$imgs[]=$iqq;
+}
+$mainImage = $imgs[0];
+$imgs[]=array_shift($imgs);
+error_log(print_r($_POST, true));
 ?>
-<div class="large-12 columns">
-	  			<h2>We are not taking orders over the internet yet. </h2>
-	  		</div>
-<p>Give us a call at 347-596-8096 or email us at <a href='mailto:hello@brittlebarn.com'>hello@brittlebarn.com</a> and we can take your order. We'll collect cash or run your card on pickup (within NYC), or run your card over the phone (for shipped orders).</p>
+<div class="large-24 columns">
+
+        <div class="large-24 columns">
+                <h2>Item<?php if($quantity > 1){ echo 's'; }?> added to your cart: <strong><?php echo $prod->name; ?></strong></h2>
+
+                <div class="panel cart-summary">
+
+                    <p><strong>Cart summary	<span></span></strong></p>
+
+                    <hr>
+                    <div id="shopping-cart-items">
+                        <?php
+
+                            $running_total=0;
+
+                            foreach($items as $id => $item_group)
+                            {
+                                $item = $item_group['item'];
+                                $row_total = $item_group['count'] * $item['price'];
+                                $running_total += $row_total;
+                                echo "<p class='shopping-cart-row'>" . $item['name'] . '  (<input type="text" class="shopping-cart-item-quantity" id="shopping-cart-quantity-' . $id . '" value="' . $item_group['count'] . '" data-price="' . $item['price'] . '"> @ $' . $item['price'] . ') <i class="shopping-cart-remove-item" data-id="' . $id . '">remove</i><span class="shopping-cart-row-total" id="shopping-cart-row-total-' . $id . '">' . $row_total . '</span></p>';
+
+                            }
+                        ?>
+                    </div>
+                    <hr>
+
+                    <p><strong>Subotal <span class="green" id="shopping-cart-subtotal">$<?php echo $running_total;?></span></strong></p>
+
+                </div>
+
+        </div>
 
 
-<? exit(); ?><div class="row">
+        <div class="large-6 columns">
 
-	  		<div class="large-12 columns">
-	  			<h2>Item added to your cart</h2>
-	  		</div>
+                <a href="index.php" class="button round btn-continue-shopping expand">Continue Shopping</a>
 
-	  		<div class="large-6 columns">
-
-	  				<p><strong>Veracruz Brittle</strong> <span>7oz bag</a></p>
-
-	  				<img src="http://placehold.it/100x100">
-
-	  				<table width="50%" border="0" cellspacing="0" cellpadding="0">
-					  <tr>
-					    <td><span class="shopping-cart-attribute">Quantity:</span></td>
-					    <td align="right"><input type="text" size="3" class="shopping-cart-qty"></td>
-					  </tr>
-					  <tr>
-					    <td><span class="shopping-cart-attribute">Price:</span></td>
-					    <td align="right"><span class="shopping-cart-attribute price">$9.00</span></td>
-					  </tr>
-					  <tr>
-					    <td><span class="shopping-cart-attribute">Shipping:</span></td>
-					    <td align="right"><span class="shopping-cart-attribute">$2.00</span></td>
-					  </tr>
-					</table>
-
-	  		</div>
-
-	  		<div class="large-6 columns">
-
-	  				<div class="panel cart-summary">
-
-	  					<p><strong>Cart summary	<span>1 Item</span></strong></p>
-
-	  					<hr>
-
-	  					<p>Subtotal	<span>$9.00</span></p>
-	  					<p>Shipping	<span>$6.00</span></p>
-	  					<p>Tax <i>Applied during checkout</i></p>
-
-	  					<hr>
-
-	  					<p><strong>Total <span class="green">$15.00</span></strong></p>
-
-	  				</div>
-
-	  		</div>
+        </div>
 
 
-	  		<div class="large-6 columns">
+        <div class="large-6 columns">
 
-	  				<a href="#" class="button round btn-continue-shopping expand">Continue Shopping</a>
+                <a href="shopping-cart.php" class="button round expand">Go to Cart</a>
 
-	  		</div>
-
-
-	  		<div class="large-6 columns">
-
-	  				<a href="#" class="button round expand">Go to Cart</a>
-
-	  		</div>
+        </div>
 
 
-	  </div>
+  </div>

@@ -344,7 +344,6 @@ class BB_DB_Obj extends BB_DB{
 				if(!self::$doNotCache) self::mcdUpdateCache("$this->tableName".$id, $getr);
 			}
 		}
-		
 
 		foreach($this->fieldList as $field){
 			if(isset($getr[$field])){
@@ -401,7 +400,6 @@ class BB_DB_Obj extends BB_DB{
 				}
 			}
 
-			
 		if($this->id<>0){ 
 			$FL=( count($fa)!=0 )?( ", ".implode(", ",$fa).") values ($this->id, ".implode(",",$wa).")" ):") values ($this->id)";
 			$sql="replace into $this->tableName (id $FL";
@@ -414,7 +412,6 @@ class BB_DB_Obj extends BB_DB{
 			
 		}else{ 
 			
-				
 			if( count($fa)!=0 )
 				$sql="insert into $this->tableName (".implode(", ",$fa).") values (".implode(",",$wa).")";
 			else

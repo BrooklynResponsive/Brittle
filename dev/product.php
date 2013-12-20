@@ -83,18 +83,18 @@ $imgs[]=array_shift($imgs);
 		</div>
 
 
-		<div class="large-6 columns">
+		<div class="large-6 columns simpleCart_shelfItem">
 			
 			<h1><?=$prod->name;?></h1>
 
-			<h2 class="product-price">$<?=$prod->price;?> <span><?=$prod->size;?></span></h2>
+			<h2 class="product-price item_price">$<?=$prod->price;?> <span><?=$prod->size;?></span></h2>
 
 
 			<p><?=$prod->description;?></p>
 
-			<p>Quantity: <input  type="text" size="3" id="quantity" value='1' class="shopping-cart-qty-big"> </p>
+			<p>Quantity: <input  type="text" size="3" id="quantity" value='1' class="shopping-cart-qty-big item_quantity"> </p>
 			
-			<a href="#" class="button radius" rel="add-to-cart">Add to Cart</a>
+			<a href="#" class="button radius item_add" rel="add-to-cart" data-product-price="<?php echo $prod->price; ?>" data-product-id="<?php echo $prod->id; ?>" data-product-name="<?php echo $prod->name; ?>">Add to Cart</a>
 
 			<hr>
 

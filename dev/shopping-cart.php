@@ -1,3 +1,7 @@
+<?
+require("includes/config.php");
+
+?>
 <!DOCTYPE html>
 <!--[if IE 8]> 				 <html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
@@ -5,7 +9,7 @@
 <head>
 	<meta charset="utf-8">
   <meta name="viewport" content="width=device-width">
-  <title>Foundation 4</title>
+  <title>Brittle Barn | Shopping Cart</title>
 
   
   <link rel="stylesheet" href="css/foundation.css">
@@ -20,133 +24,131 @@
   <![endif]-->
   
 
-  <script src="js/vendor/custom.modernizr.js"></script>
+  	<meta property="og:site_name" content="Brittle Barn"/>
+	<meta property="og:type" content="website" />
+	<meta property="og:title" content="Brittle Barn Chopping Cart" />
+	<meta property="og:url" content="<?=WEBSITE;?>/shopping-cart.php" />
+	
+    <script src="js/vendor/custom.modernizr.js"></script>
+    <script type="text/javascript" src="https://js.stripe.com/v2/"></script>
+
+    <script type="text/javascript">
+      // This identifies your website in the createToken call below
+        Stripe.setPublishableKey('<?php echo $STRIPE_PUBLISHABLE_KEY;?>');
+        tax_rate = <?php echo $SALES_TAX_RATE; ?>;
+    </script>
 
 </head>
 <body>
 
-	<header>
-
-			<div class="row">
-				
-				<div class="large-2 columns">
-					<a href="#"><img src="img/logo.gif"></a>
-				</div>
-
-				<div class="large-7 columns top-padding">
-					
-					<div data-magellan-expedition="fixed">
-					  <dl class="sub-nav">
-					    <dd data-magellan-arrival="Brittle"><a href="#Brittle">Brittle</a></dd>
-					    <dd data-magellan-arrival="Sweets"><a href="#Sweets">Sweets</a></dd>
-					    <dd data-magellan-arrival="Syrup"><a href="#Syrup">Syrup</a></dd>
-					    <dd data-magellan-arrival="About"><a href="#About">About Us</a></dd>
-					    <dd data-magellan-arrival="Contact"><a href="#Contact">Contact Us</a></dd>
-					  </dl>
-					</div>
-					    
-
-				</div>
-
-				<div class="large-3 columns text-right">
-					
-					<i class="general foundicon-cart shop-icon"></i>
-
-					<span class="connect">connect</span>
-
-					<ul class="icon-grid">
-					  <li><i class="social foundicon-twitter"></i></li>
-				      <li><i class="social foundicon-facebook"></i></li>
-				      <li><i class="social foundicon-instagram"></i></li>
-				    </ul>
-
-				</div>
-			
-			</div>
-
-	</header>
+	<? include("includes/header.inc"); ?> 
 	
 
 
 	<div class="row">
-
-
-		<div class="large-8 columns">
-			
-			<h1>Shopping Cart</h1>
-
-			<table width="100%" border="0" cellspacing="0" cellpadding="0" class="shopping-cart">
-			  <tr>
-			    <td width="5%">2</td>
-			    <td width="85%">Bourbon Whiskey Brittle</td>
-			    <td width="10%" class="green">$10</td>
-			  </tr>
-			  <tr>
-			    <td>1</td>
-			    <td>Veracruz Brittle</td>
-			    <td class="green">$5</td>
-			  </tr>
-			  <tr>
-			    <td class="top-border">&nbsp;</td>
-			    <td class="top-border">TOTAL</td>
-			    <td class="top-border green">$15</td>
-			  </tr>
-			</table>
-
-
-			<a href="#" class="button radius right">Checkout</a>
-
-		</div>
 		
+		<div class="large-8 columns" id="shoppingCartDiv">
+            <h1>Shopping Cart</h1>
+
+            <div id="shoppingCartInfo">
+            </div>
+
+			<h1>Delivery Info</h1>
+
+            <div class="row">
+                <div class="large-6 columns">
+                    <label for="shoppingCartFirstName">First Name</label>
+                    <input type="text" id="shoppingCartFirstName" placeholder="" />
+                </div>
+                <div class="large-6 columns">
+                    <label forid="shoppingCartLastName">Last Name</label>
+                    <input type="text" id="shoppingCartLastName" placeholder="" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">
+                    <label for="shoppingCartAddress1">Address</label>
+                    <input type="text" id="shoppingCartAddress1" data-validate="nonempty" placeholder="" />
+                </div>
+            </div>
+            <div class="row">
+                <div class="large-12 columns">
+                    <label for="shoppingCartAddress2">Address</label>
+                    <input type="text" id="shoppingCartAddress2" placeholder="" />
+                </div>
+            </div>
+                <div class="row">
+                    <div class="large-7 columns">
+                        <label for="shoppingCartCity">City</label>
+                        <input type="text" id="shoppingCartCity" data-validate="nonempty" placeholder="" />
+                    </div>
+                    <div class="large-2 columns">
+                        <label for="shoppingCartState">State</label>
+                        <input type="text" id="shoppingCartState" data-validate="nonempty,length:2" placeholder="" />
+                    </div>
+                    <div class="large-3 columns">
+                        <label for="shoppingCartZipcode">Zipcode</label>
+                        <input type="text" id="shoppingCartZipcode" data-validate="nonempty" />
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="large-6 columns">
+                        <label for="shoppingCartEmail">Email</label>
+                        <input type="text" id="shoppingCartEmail" data-validate="nonempty" placeholder="" />
+                    </div>
+                    <div class="large-6 columns">
+                        <label for="shoppingCartPhone">Phone</label>
+                        <input type="text" id="shoppingCartPhone" data-validate="nonempty,min-length:10" placeholder="" />
+                    </div>
+                </div>
+            <h1 id="shoppingCartAccountHeading">Create an Account (Optional)</h1>
+            <div class="row" id="shoppingCartLoginPane" style="display:none;">
+                <div class="large-6 columns">
+                    <label for="shoppingCartLoginEmail">Email</label>
+                    <input type="text" id="shoppingCartLoginEmail" placeholder="" />
+                </div>
+                <div class="large-6 columns">
+                    <label for="shoppingCartLoginPassword">Password</label>
+                    <input type="password" id="shoppingCartLoginPassword" placeholder="" />
+                </div>
+            </div>
+            <div class="row" id="shoppingCartRegisterPane">
+                <div class="large-6 columns">
+                    <label for="shoppingCartCreatePassword">Password</label>
+                    <input type="password" id="shoppingCartCreatePassword" placeholder="" />
+                </div>
+                <div class="large-6 columns">
+                    <label for="shoppingCartCreatePasswordConfirm">Confirm Password</label>
+                    <input type="password" id="shoppingCartCreatePasswordConfirm" placeholder="" />
+                </div>
+            </div>
+            <form action="" method="POST" id="payment-form">
+            <h1>Credit Card Info</h1>
+                <div class="row">
+                    <div class="large-6 columns">
+                        <label for="shoppingCartCreditNumber">Credit Card Number</label>
+                        <input type="text" data-stripe="number"  id="shoppingCartCreditNumber" data-validate="nonempty" placeholder="" />
+                    </div>
+                    <div class="large-2 columns">
+                        <label for="shoppingCartCVC">CVC</label>
+                        <input type="text" size="4" data-stripe="cvc" id="shoppingCartCVC" data-validate="nonempty" placeholder="" />
+                    </div>
+                    <div class="large-2 columns">
+                        <label for="shoppingCartExpMonth">Month</label>
+                        <input type="text" data-stripe="exp-month" id="shoppingCartExpMonth" data-validate="nonempty,length:2" placeholder="MM" />
+                    </div>
+                    <div class="large-2 columns">
+                        <label for="shoppingCartExpYear">Year</label>
+                        <input type="text" data-stripe="exp-year" id="shoppingCartExpYear" data-validate="nonempty,length:2" placeholder="YY" />
+                    </div>
+                </div>
+                <a href="#" id="shoppingCartCheckoutButton" class="button radius right">Checkout</a>
+
+            </form>
+		</div>
 	</div>
+<? require("includes/before_body_end.inc"); ?>
+<script src="js/shopping-cart.js"></script>    
 
-
-
-  <script>
-  document.write('<script src=' +
-  ('__proto__' in {} ? 'js/vendor/zepto' : 'js/vendor/jquery') +
-  '.js><\/script>')
-  </script>
-  
-  <script src="js/foundation.min.js"></script>
-  <!--
-  
-  <script src="js/foundation/foundation.js"></script>
-  
-  <script src="js/foundation/foundation.interchange.js"></script>
-  
-  <script src="js/foundation/foundation.abide.js"></script>
-  
-  <script src="js/foundation/foundation.dropdown.js"></script>
-  
-  <script src="js/foundation/foundation.placeholder.js"></script>
-  
-  <script src="js/foundation/foundation.forms.js"></script>
-  
-  <script src="js/foundation/foundation.alerts.js"></script>
-  
-  <script src="js/foundation/foundation.magellan.js"></script>
-  
-  <script src="js/foundation/foundation.reveal.js"></script>
-  
-  <script src="js/foundation/foundation.tooltips.js"></script>
-  
-  <script src="js/foundation/foundation.clearing.js"></script>
-  
-  <script src="js/foundation/foundation.cookie.js"></script>
-  
-  <script src="js/foundation/foundation.joyride.js"></script>
-  
-  <script src="js/foundation/foundation.orbit.js"></script>
-  
-  <script src="js/foundation/foundation.section.js"></script>
-  
-  <script src="js/foundation/foundation.topbar.js"></script>
-  
-  -->
-  
-  <script>
-    $(document).foundation();
-  </script>
 </body>
 </html>
