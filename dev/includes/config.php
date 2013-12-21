@@ -14,8 +14,8 @@ if( strpos( dirname(__FILE__), "/dev") !== false || true ) {  //franks dev serve
 			
 			 ini_set("display_errors", "On");
 			 ini_set("error_reporting",E_ALL);
-			define("WEBSITE","http://localhost");
-			define("SSLWEBSITE","http://localhost");
+			define("WEBSITE","https://www.brittlebarn.com/dev");
+			define("SSLWEBSITE","https://www.brittlebarn.com/dev");
 			define("BB_DB_NAME", "multil4_barn_dev");	
 			define("BB_DB_SERVER", "localhost");
 			define("BB_DB_USER", "multil4_barnuser");	
